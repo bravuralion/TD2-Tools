@@ -30,7 +30,7 @@
     #lok {
       position: absolute;
       top: 5px; /* jetzt sichtbar im Balken */
-      width: 100px;
+      width: auto;
       height: 50px;
       transition: left 1s;
       z-index: 2;
@@ -46,24 +46,37 @@
       text-shadow: 0 0 5px black;
       z-index: 3;
     }
+	.wagon {
+	  position: absolute;
+	  top: 5px;
+	  width: auto;
+	  height: 50px;
+	  transition: left 1s;
+	  z-index: 1; /* hinter Lok */
+}
   </style>
 </head>
 <body>
   <div id="container">
     <div id="progress-bar"></div>
     <img id="lok" src="https://stacjownik.spythere.eu/static/thumbnails/EP09-030.png">
+	<img class="wagon" id="wagon1" src="https://stacjownik.spythere.eu/static/thumbnails/111a_PKP_Bdnu_02.png">
+    <img class="wagon" id="wagon2" src="https://stacjownik.spythere.eu/static/thumbnails/111a_PKP_Bdnu_02.png">
+
     <div id="info">Lade Fahrplan...</div>
   </div>
 
   <script>
-    const API_URL = "https://stacjownik.spythere.eu/api/getTimetables?driverName=Majzef";
+    const API_URL = "https://stacjownik.spythere.eu/api/getTimetables?driverName=poznanskimk123";
     const containerWidth = 600;
-    const lokWidth = 50;
+	const lok = document.getElementById("lok");
+	const wagon1 = document.getElementById("wagon1");
+	const wagon2 = document.getElementById("wagon2");
+	const bar = document.getElementById("progress-bar");
+	const info = document.getElementById("info");
 
-    const lok = document.getElementById("lok");
-    const bar = document.getElementById("progress-bar");
-    const info = document.getElementById("info");
-
+	const lokWidth = 100;
+	const wagonGap = 0; // optionaler Abstand zwischen Lok & Waggons
     async function update() {
       try {
         const res = await fetch(API_URL);
@@ -94,9 +107,13 @@
 		const hue = percent * 1.2; // 0% = 0° (rot), 100% = 120° (grün)
 		bar.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
 
-        // 🚂 Lok-Position
-		const lokPos = bar.offsetWidth - (lok.offsetWidth / 1);
+		// 🚂 Lok-Position
+		const lokPos = bar.offsetWidth - lokWidth;
 		lok.style.left = `${lokPos}px`;
+
+		// 🚃 Waggons folgen
+		wagon1.style.left = `${lokPos - lokWidth - wagonGap}px`;
+		wagon2.style.left = `${lokPos - 2 * (lokWidth + wagonGap)}px`;
 
         const done = progress >= distance;
         info.textContent = done
