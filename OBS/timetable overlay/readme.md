@@ -74,13 +74,13 @@ Doppelklick auf die HTML-Datei oder Rechtsklick → Öffnen mit → Browser dein
 ## ❓ Fragen oder Probleme?
 
 Erstelle ein Issue oder kontaktiere mich via GitHub.  
-Pull Requests willkommen! 🚀
+Pull Requests willkommen!
 
 ---
 
 ## 🛠 Credits
 
-- Overlay-Script: [Bravura](https://github.com/deinProfil)
+- Overlay-Script: [Bravura](https://github.com/bravuralion)
 - Datenquelle: [Stacjownik TD2](https://stacjownik.spythere.eu)
 - Icons: Font Awesome / Wikipedia Commons
 
