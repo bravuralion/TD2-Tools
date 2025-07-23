@@ -13,7 +13,7 @@
 
     #container {
       width: 600px;
-      height: 60px;
+      height: 50px;
       background: rgba(0,0,0,0.6);
       border-radius: 10px;
       overflow: hidden;
@@ -30,27 +30,25 @@
     #lok {
       position: absolute;
       top: 5px; /* jetzt sichtbar im Balken */
-      width: auto;
-      height: 50px;
+      width: 120px;
+      height: 40px;
       transition: left 1s;
       z-index: 2;
     }
 
-    #info {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      top: 0;
-      line-height: 60px;
-      font-size: 20px;
-      text-shadow: 0 0 5px black;
-      z-index: 3;
-    }
+	#info {
+	  width: 600px;
+	  text-align: center;
+	  margin-top: 4px;
+	  font-size: 28px;
+	  text-shadow: 0 0 5px black;
+	}
+		
 	.wagon {
 	  position: absolute;
 	  top: 5px;
-	  width: auto;
-	  height: 50px;
+	  width: 120px;
+	  height: 40px;
 	  transition: left 1s;
 	  z-index: 1; /* hinter Lok */
 }
@@ -62,12 +60,11 @@
     <img id="lok" src="https://stacjownik.spythere.eu/static/thumbnails/EP09-030.png">
 	<img class="wagon" id="wagon1" src="https://stacjownik.spythere.eu/static/thumbnails/111a_PKP_Bdnu_02.png">
     <img class="wagon" id="wagon2" src="https://stacjownik.spythere.eu/static/thumbnails/111a_PKP_Bdnu_02.png">
-
-    <div id="info">Lade Fahrplan...</div>
   </div>
+  <div id="info">Lade Fahrplan...</div>
 
   <script>
-    const API_URL = "https://stacjownik.spythere.eu/api/getTimetables?driverName=poznanskimk123";
+    const API_URL = "https://stacjownik.spythere.eu/api/getTimetables?driverName=BravuraLion";
     const containerWidth = 600;
 	const lok = document.getElementById("lok");
 	const wagon1 = document.getElementById("wagon1");
@@ -75,8 +72,8 @@
 	const bar = document.getElementById("progress-bar");
 	const info = document.getElementById("info");
 
-	const lokWidth = 100;
-	const wagonGap = 0; // optionaler Abstand zwischen Lok & Waggons
+	const lokWidth = 120;
+	const wagonGap = 1; // optionaler Abstand zwischen Lok & Waggons
     async function update() {
       try {
         const res = await fetch(API_URL);
