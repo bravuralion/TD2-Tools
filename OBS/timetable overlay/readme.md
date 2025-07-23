@@ -57,7 +57,7 @@ Doppelklick auf die HTML-Datei oder Rechtsklick → Öffnen mit → Browser dein
 
 ## 📸 Vorschau
 
-![Vorschau](https://github.com/bravuralion/TD2-Tools/blob/main/OBS/timetable%20overlay/2025-07-23%2017_36_10-Projector%20-%20Preview.jpg)  
+![Vorschau](https://github.com/bravuralion/TD2-Tools/blob/main/OBS/timetable%20overlay/IMG/2025-07-23%2017_36_10-Projector%20-%20Preview.jpg)  
 *(Du kannst hier gern ein echtes Screenshot einfügen)*
 
 ---
