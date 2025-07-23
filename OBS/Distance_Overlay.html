@@ -30,7 +30,7 @@
     #lok {
       position: absolute;
       top: 5px; /* jetzt sichtbar im Balken */
-      width: 90px;
+      width: 100px;
       height: 50px;
       transition: left 1s;
       z-index: 2;
@@ -56,7 +56,7 @@
   </div>
 
   <script>
-    const API_URL = "https://stacjownik.spythere.eu/api/getTimetables?driverName=MartinXXCZ29";
+    const API_URL = "https://stacjownik.spythere.eu/api/getTimetables?driverName=Majzef";
     const containerWidth = 600;
     const lokWidth = 50;
 
@@ -89,18 +89,14 @@
         const percent = Math.min((progress / distance) * 100, 100);
         bar.style.width = `${percent}%`;
 
-        // 🟡 Farben je nach Fortschritt
-        if (percent < 25) {
-          bar.style.backgroundColor = "red";
-        } else if (percent < 75) {
-          bar.style.backgroundColor = "gold";
-        } else {
-          bar.style.backgroundColor = "limegreen";
-        }
+
+		// 🎨 Fließender Farbverlauf von rot → grün
+		const hue = percent * 1.2; // 0% = 0° (rot), 100% = 120° (grün)
+		bar.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
 
         // 🚂 Lok-Position
-        const lokPos = (percent / 100) * (containerWidth - lokWidth);
-        lok.style.left = `${lokPos}px`;
+		const lokPos = bar.offsetWidth - (lok.offsetWidth / 1);
+		lok.style.left = `${lokPos}px`;
 
         const done = progress >= distance;
         info.textContent = done
@@ -113,7 +109,7 @@
       }
     }
 
-    setInterval(update, 5000);
+    setInterval(update, 1000);
     update();
   </script>
 </body>
