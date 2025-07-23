@@ -77,8 +77,6 @@ Double-click → Open with → browser of your choice
 
 - Zeigt immer den **zuletzt gestarteten Fahrplan** (auch wenn abgeschlossen)  
   Always shows the **last started timetable** (even if finished)
-- API aktualisiert alle 5 Sekunden – Overlay holt neue Daten automatisch  
-  API updates every 5s – overlay fetches data automatically
 - Nutze transparente Bilder für beste Optik  
   Use transparent images for the best look
 
