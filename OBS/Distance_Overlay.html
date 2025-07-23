@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>TD2 Fahrplan Overlay</title>
+  <title>TD2 Timetable Overlay</title>
   <style>
     body {
       margin: 0;
@@ -29,101 +29,142 @@
 
     #lok {
       position: absolute;
-      top: 5px; /* jetzt sichtbar im Balken */
+      top: 5px;
       width: 120px;
       height: 40px;
       transition: left 1s;
       z-index: 2;
     }
 
-	#info {
-	  width: 600px;
-	  text-align: center;
-	  margin-top: 4px;
-	  font-size: 28px;
-	  text-shadow: 0 0 5px black;
-	}
-		
-	.wagon {
-	  position: absolute;
-	  top: 5px;
-	  width: 120px;
-	  height: 40px;
-	  transition: left 1s;
-	  z-index: 1; /* hinter Lok */
-}
+    .wagon {
+      position: absolute;
+      top: 5px;
+      width: 120px;
+      height: 40px;
+      transition: left 1s;
+      z-index: 1;
+    }
+
+    #info {
+      width: 600px;
+      text-align: center;
+      margin-top: 4px;
+      font-size: 28px;
+      text-shadow: 0 0 5px black;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Fortlaufbalken mit Lok und Waggons -->
   <div id="container">
     <div id="progress-bar"></div>
-    <img id="lok" src="https://stacjownik.spythere.eu/static/thumbnails/EP09-030.png">
-	<img class="wagon" id="wagon1" src="https://stacjownik.spythere.eu/static/thumbnails/111a_PKP_Bdnu_02.png">
-    <img class="wagon" id="wagon2" src="https://stacjownik.spythere.eu/static/thumbnails/111a_PKP_Bdnu_02.png">
+    <img id="lok">
+    <img class="wagon" id="wagon1">
+    <img class="wagon" id="wagon2">
   </div>
+
+  <!-- Fortschrittsinfo -->
   <div id="info">Lade Fahrplan...</div>
 
   <script>
-    const API_URL = "https://stacjownik.spythere.eu/api/getTimetables?driverName=BravuraLion";
-    const containerWidth = 600;
-	const lok = document.getElementById("lok");
-	const wagon1 = document.getElementById("wagon1");
-	const wagon2 = document.getElementById("wagon2");
-	const bar = document.getElementById("progress-bar");
-	const info = document.getElementById("info");
+    // ================================
+    // ⚙️ KONFIGURATION
+    // ================================
+    const config = {
+      username: "BravuraLion",        // <-- TD2-Fahrernamen hier eintragen, Case Sensitive!
+      language: "en",                 // "de" für Deutsch, "en" für Englisch
+      lokImage: "https://stacjownik.spythere.eu/static/thumbnails/EP09-030.png",
+      wagonImages: [
+        "https://stacjownik.spythere.eu/static/thumbnails/111a_PKP_Bdnu_02.png",
+        "https://stacjownik.spythere.eu/static/thumbnails/111a_PKP_Bdnu_02.png"
+      ]
+    };
 
-	const lokWidth = 120;
-	const wagonGap = 1; // optionaler Abstand zwischen Lok & Waggons
+    // ================================
+    // 🧠 TEXTBAUSTEINE
+    // ================================
+    const texts = {
+      de: {
+        loading: "Lade Fahrplan...",
+        none: "Kein Fahrplan gefunden.",
+        error: "Fehler beim Laden!",
+        finished: dist => `Fahrplan abgeschlossen (${dist} km)`,
+        progress: (curr, total) => `${curr} km von ${total} km`
+      },
+      en: {
+        loading: "Loading timetable...",
+        none: "No timetable found.",
+        error: "Error loading data!",
+        finished: dist => `Timetable completed (${dist} km)`,
+        progress: (curr, total) => `${curr} km of ${total} km`
+      }
+    };
+
+    // ================================
+    // 🚂 STARTUP
+    // ================================
+    const API_URL = `https://stacjownik.spythere.eu/api/getTimetables?driverName=${config.username}`;
+    const bar = document.getElementById("progress-bar");
+    const info = document.getElementById("info");
+    const lok = document.getElementById("lok");
+    const wagon1 = document.getElementById("wagon1");
+    const wagon2 = document.getElementById("wagon2");
+    const containerWidth = 600;
+    const lokWidth = 120;
+    const wagonGap = 1;
+
+    // Bilder zuweisen
+    lok.src = config.lokImage;
+    wagon1.src = config.wagonImages[0];
+    wagon2.src = config.wagonImages[1];
+
     async function update() {
+      const t = texts[config.language] || texts["en"];
+
       try {
         const res = await fetch(API_URL);
         const data = await res.json();
 
         if (!Array.isArray(data) || data.length === 0) {
-          info.textContent = "Kein Fahrplan gefunden.";
+          info.textContent = t.none;
           return;
         }
 
         const plan = data[0];
-        const rawDistance = plan.routeDistance;
-        const rawProgress = plan.currentDistance;
-
-        const distance = parseFloat(rawDistance);
-        const progress = parseFloat(rawProgress);
+        const distance = parseFloat(plan.routeDistance);
+        const progress = parseFloat(plan.currentDistance);
 
         if (isNaN(distance) || isNaN(progress)) {
-          info.textContent = `Ungültige Werte: ${rawDistance} / ${rawProgress}`;
+          info.textContent = t.error;
           return;
         }
 
         const percent = Math.min((progress / distance) * 100, 100);
         bar.style.width = `${percent}%`;
 
+        // Farbverlauf rot → grün
+        const hue = percent * 1.2;
+        bar.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
 
-		// 🎨 Fließender Farbverlauf von rot → grün
-		const hue = percent * 1.2; // 0% = 0° (rot), 100% = 120° (grün)
-		bar.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
-
-		// 🚂 Lok-Position
-		const lokPos = bar.offsetWidth - lokWidth;
-		lok.style.left = `${lokPos}px`;
-
-		// 🚃 Waggons folgen
-		wagon1.style.left = `${lokPos - lokWidth - wagonGap}px`;
-		wagon2.style.left = `${lokPos - 2 * (lokWidth + wagonGap)}px`;
+        // Lok- und Wagenposition
+        const lokPos = bar.offsetWidth - lokWidth;
+        lok.style.left = `${lokPos}px`;
+        wagon1.style.left = `${lokPos - lokWidth - wagonGap}px`;
+        wagon2.style.left = `${lokPos - 2 * (lokWidth + wagonGap)}px`;
 
         const done = progress >= distance;
         info.textContent = done
-          ? `✅ Fahrplan abgeschlossen (${progress.toFixed(1)} km)`
-          : `${progress.toFixed(1)} km von ${distance.toFixed(1)} km`;
+          ? t.finished(progress.toFixed(1))
+          : t.progress(progress.toFixed(1), distance.toFixed(1));
 
       } catch (e) {
         console.error(e);
-        info.textContent = "Fehler beim Laden!";
+        info.textContent = texts[config.language].error;
       }
     }
 
-    setInterval(update, 1000);
+    setInterval(update, 5000);
     update();
   </script>
 </body>
