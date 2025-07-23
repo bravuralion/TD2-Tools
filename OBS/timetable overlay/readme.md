@@ -57,11 +57,12 @@ Doppelklick auf die HTML-Datei oder Rechtsklick → Öffnen mit → Browser dein
 
 ## 📸 Vorschau
 
-![Vorschau](https://github.com/bravuralion/TD2-Tools/blob/main/OBS/timetable%20overlay/IMG/2025-07-23%2017_36_10-Projector%20-%20Preview.jpg) 
-(https://github.com/bravuralion/TD2-Tools/blob/main/OBS/timetable%20overlay/IMG/2025-07-23%2017_54_42-Projector%20-%20Preview.jpg)
-(https://github.com/bravuralion/TD2-Tools/blob/main/OBS/timetable%20overlay/IMG/2025-07-23%2018_00_48-Projector%20-%20Preview.jpg)
-(https://github.com/bravuralion/TD2-Tools/blob/main/OBS/timetable%20overlay/IMG/2025-07-23%2018_06_54-Projector%20-%20Preview.jpg)
-(https://github.com/bravuralion/TD2-Tools/blob/main/OBS/timetable%20overlay/IMG/2025-07-23%2018_11_31-Projector%20-%20Preview.jpg)
+![Vorschau 1](https://github.com/bravuralion/TD2-Tools/blob/main/OBS/timetable%20overlay/IMG/2025-07-23%2017_36_10-Projector%20-%20Preview.jpg)
+![Vorschau 2](https://github.com/bravuralion/TD2-Tools/blob/main/OBS/timetable%20overlay/IMG/2025-07-23%2017_54_42-Projector%20-%20Preview.jpg)
+![Vorschau 3](https://github.com/bravuralion/TD2-Tools/blob/main/OBS/timetable%20overlay/IMG/2025-07-23%2018_00_48-Projector%20-%20Preview.jpg)
+![Vorschau 4](https://github.com/bravuralion/TD2-Tools/blob/main/OBS/timetable%20overlay/IMG/2025-07-23%2018_06_54-Projector%20-%20Preview.jpg)
+![Vorschau 5](https://github.com/bravuralion/TD2-Tools/blob/main/OBS/timetable%20overlay/IMG/2025-07-23%2018_11_31-Projector%20-%20Preview.jpg)
+
 
 ---
 
