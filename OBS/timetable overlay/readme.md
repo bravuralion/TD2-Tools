@@ -44,8 +44,7 @@ Du kannst beliebige andere Bilder verwenden – z. B. deine Lieblingslok oder 
 1. Öffne OBS
 2. Füge **eine neue Browser-Quelle** hinzu
 3. Wähle die HTML-Datei auf deiner Festplatte oder gib eine lokale URL an (`file:///C:/...`)
-4. Setze die Größe auf `600x90`
-5. Optional: **Chroma Key** oder **Transparenz aktivieren**, wenn du es in deine Szene einbauen willst
+4. Setze die Größe auf `600x200`
 
 ---
 
@@ -58,7 +57,7 @@ Doppelklick auf die HTML-Datei oder Rechtsklick → Öffnen mit → Browser dein
 
 ## 📸 Vorschau
 
-![Vorschau](https://via.placeholder.com/600x90.png?text=TD2+Overlay+Vorschau)  
+![Vorschau](https://github.com/bravuralion/TD2-Tools/blob/main/OBS/timetable%20overlay/2025-07-23%2017_36_10-Projector%20-%20Preview.jpg)  
 *(Du kannst hier gern ein echtes Screenshot einfügen)*
 
 ---
