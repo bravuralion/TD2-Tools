@@ -27,22 +27,12 @@
       transition: width 1s, background-color 0.5s;
     }
 
-    #lok {
+    .vehicle {
       position: absolute;
       top: 5px;
       width: 120px;
       height: 40px;
       transition: left 1s;
-      z-index: 2;
-    }
-
-    .wagon {
-      position: absolute;
-      top: 5px;
-      width: 120px;
-      height: 40px;
-      transition: left 1s;
-      z-index: 1;
     }
 
     #info {
@@ -56,34 +46,18 @@
 </head>
 <body>
 
-  <!-- Fortlaufbalken mit Lok und Waggons -->
   <div id="container">
     <div id="progress-bar"></div>
-    <img id="lok">
-    <img class="wagon" id="wagon1">
-    <img class="wagon" id="wagon2">
+    <div id="train-images"></div>
   </div>
-
-  <!-- Fortschrittsinfo -->
   <div id="info">Lade Fahrplan...</div>
 
   <script>
-    // ================================
-    // KONFIGURATION
-    // ================================
     const config = {
-      username: "FoxyPL222222",        // <-- TD2-Fahrernamen hier eintragen, Case Sensitive!
-      language: "en",                 // "de" für Deutsch, "en" für Englisch
-      lokImage: "https://stacjownik.spythere.eu/static/thumbnails/EP09-030.png",
-      wagonImages: [
-        "https://stacjownik.spythere.eu/static/thumbnails/111a_PKP_Bdnu_02.png",
-        "https://stacjownik.spythere.eu/static/thumbnails/111a_PKP_Bdnu_02.png"
-      ]
+      username: "MiKoLaS",
+      language: "de"
     };
 
-    // ================================
-    // TEXTBAUSTEINE
-    // ================================
     const texts = {
       de: {
         loading: "Lade Fahrplan...",
@@ -101,23 +75,12 @@
       }
     };
 
-    // ================================
-    // STARTUP
-    // ================================
     const API_URL = `https://stacjownik.spythere.eu/api/getTimetables?driverName=${config.username}`;
     const bar = document.getElementById("progress-bar");
     const info = document.getElementById("info");
-    const lok = document.getElementById("lok");
-    const wagon1 = document.getElementById("wagon1");
-    const wagon2 = document.getElementById("wagon2");
-    const containerWidth = 600;
-    const lokWidth = 120;
-    const wagonGap = 1;
-
-    // Bilder zuweisen
-    lok.src = config.lokImage;
-    wagon1.src = config.wagonImages[0];
-    wagon2.src = config.wagonImages[1];
+    const trainImages = document.getElementById("train-images");
+    const vehicleWidth = 120;
+    const vehicleGap = 2;
 
     async function update() {
       const t = texts[config.language] || texts["en"];
@@ -134,6 +97,9 @@
         const plan = data[0];
         const distance = parseFloat(plan.routeDistance);
         const progress = parseFloat(plan.currentDistance);
+        const vehicles = plan.stockString
+          ? plan.stockString.split(";").map(v => v.trim().split(":")[0])
+          : [];
 
         if (isNaN(distance) || isNaN(progress)) {
           info.textContent = t.error;
@@ -142,24 +108,28 @@
 
         const percent = Math.min((progress / distance) * 100, 100);
         bar.style.width = `${percent}%`;
-
-        // Farbverlauf rot → grün
         const hue = percent * 1.2;
         bar.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
 
-        // Lok- und Wagenposition
-        const lokPos = bar.offsetWidth - lokWidth;
-        lok.style.left = `${lokPos}px`;
-        wagon1.style.left = `${lokPos - lokWidth - wagonGap}px`;
-        wagon2.style.left = `${lokPos - 2 * (lokWidth + wagonGap)}px`;
+        trainImages.innerHTML = "";
+
+        vehicles.forEach((type, index) => {
+          const img = document.createElement("img");
+          img.className = "vehicle";
+          img.src = `https://stacjownik.spythere.eu/static/thumbnails/${type}.png`;
+          img.style.left = `${(bar.offsetWidth - (index + 1) * (vehicleWidth + vehicleGap))}px`;
+          img.onerror = () => {
+            img.style.display = 'none';
+          };
+          trainImages.appendChild(img);
+        });
 
         const done = progress >= distance;
         info.textContent = done
           ? t.finished(progress.toFixed(1))
           : t.progress(progress.toFixed(1), distance.toFixed(1));
 
-      } catch (e) {
-        console.error(e);
+      } catch {
         info.textContent = texts[config.language].error;
       }
     }
