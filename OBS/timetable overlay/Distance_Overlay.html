@@ -30,7 +30,7 @@
     .vehicle {
       position: absolute;
       top: 5px;
-      width: 120px;
+      width: 119px;
       height: 40px;
       transition: left 1s;
     }
@@ -54,7 +54,7 @@
 
   <script>
     const config = {
-      username: "MiKoLaS",
+      username: "BravuraLion", // TD2-Name
       language: "de"
     };
 
@@ -79,57 +79,119 @@
     const bar = document.getElementById("progress-bar");
     const info = document.getElementById("info");
     const trainImages = document.getElementById("train-images");
-    const vehicleWidth = 120;
-    const vehicleGap = 2;
+    const containerWidth = 600;
+    const vehicleWidth = 119;
+    const vehicleGap = 1;
 
     async function update() {
       const t = texts[config.language] || texts["en"];
+      console.log("Update gestartet");
 
       try {
         const res = await fetch(API_URL);
         const data = await res.json();
 
+        console.log("API Response:", data);
+
         if (!Array.isArray(data) || data.length === 0) {
           info.textContent = t.none;
+          console.warn("Keine Daten gefunden.");
           return;
         }
 
         const plan = data[0];
         const distance = parseFloat(plan.routeDistance);
         const progress = parseFloat(plan.currentDistance);
-        const vehicles = plan.stockString
-          ? plan.stockString.split(";").map(v => v.trim().split(":")[0])
-          : [];
+const vehicles = plan.stockString
+  ? plan.stockString.split(";").map(v => v.trim().split(":")[0])
+  : [];
+
+
+        console.log("Fahrzeuge:", vehicles);
+        console.log("Strecke:", progress, "/", distance);
 
         if (isNaN(distance) || isNaN(progress)) {
           info.textContent = t.error;
+          console.error("Ungültige Streckendaten!");
           return;
         }
 
+        // Progressbar-Update
         const percent = Math.min((progress / distance) * 100, 100);
         bar.style.width = `${percent}%`;
         const hue = percent * 1.2;
         bar.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
 
-        trainImages.innerHTML = "";
+        // Fahrzeugbilder neu generieren
+        trainImages.innerHTML = ""; 
 
-        vehicles.forEach((type, index) => {
+let offsetIndex = 0;
+
+vehicles.forEach((fullId) => {
+  const isSingleUnit = /^EN(57|71)-\d+$/i.test(fullId);
+  const isDoubleUnit = /^2EN(57|71)-\d+\+\d+$/i.test(fullId);
+
+  if (isDoubleUnit) {
+    const match = fullId.match(/^2(EN(57|71))-(\d+)\+(\d+)$/i);
+    if (match) {
+      const type = match[1]; // EN57 oder EN71
+      const id1 = match[3];
+      const id2 = match[4];
+      const unitIds = [`${type}-${id1}`, `${type}-${id2}`];
+
+      unitIds.forEach(unit => {
+        ["rb", "s", "ra"].forEach(suffix => {
+          const partId = `${unit}${suffix}`;
           const img = document.createElement("img");
           img.className = "vehicle";
-          img.src = `https://stacjownik.spythere.eu/static/thumbnails/${type}.png`;
-          img.style.left = `${(bar.offsetWidth - (index + 1) * (vehicleWidth + vehicleGap))}px`;
+          img.src = `https://stacjownik.spythere.eu/static/thumbnails/${partId}.png`;
+          img.style.left = `${(bar.offsetWidth - (offsetIndex + 1) * (vehicleWidth + vehicleGap))}px`;
           img.onerror = () => {
+            console.warn("Bild nicht gefunden:", img.src);
             img.style.display = 'none';
           };
           trainImages.appendChild(img);
+          offsetIndex++;
         });
+      });
+    }
+  } else if (isSingleUnit) {
+    ["rb", "s", "ra"].forEach(suffix => {
+      const partId = `${fullId}${suffix}`;
+      const img = document.createElement("img");
+      img.className = "vehicle";
+      img.src = `https://stacjownik.spythere.eu/static/thumbnails/${partId}.png`;
+      img.style.left = `${(bar.offsetWidth - (offsetIndex + 1) * (vehicleWidth + vehicleGap))}px`;
+      img.onerror = () => {
+        console.warn("Bild nicht gefunden:", img.src);
+        img.style.display = 'none';
+      };
+      trainImages.appendChild(img);
+      offsetIndex++;
+    });
+  } else {
+    const img = document.createElement("img");
+    img.className = "vehicle";
+    img.src = `https://stacjownik.spythere.eu/static/thumbnails/${fullId}.png`;
+    img.style.left = `${(bar.offsetWidth - (offsetIndex + 1) * (vehicleWidth + vehicleGap))}px`;
+    img.onerror = () => {
+      console.warn("Bild nicht gefunden:", img.src);
+      img.style.display = 'none';
+    };
+    trainImages.appendChild(img);
+    offsetIndex++;
+  }
+});
+
+
 
         const done = progress >= distance;
         info.textContent = done
           ? t.finished(progress.toFixed(1))
           : t.progress(progress.toFixed(1), distance.toFixed(1));
 
-      } catch {
+      } catch (e) {
+        console.error("💥 API-Fehler:", e);
         info.textContent = texts[config.language].error;
       }
     }
