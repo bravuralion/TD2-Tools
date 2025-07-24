@@ -17,7 +17,7 @@ A simple HTML overlay for **Train Driver 2** that fetches your current timetable
 
 - Fortschrittsanzeige des aktuellen Fahrplans (in Kilometern)  
   Shows your current timetable progress (in kilometers)
-- Lok + Waggons fahren entlang eines Fortschrittsbalkens  
+- Lok + Waggons fahren entlang des Fortschrittsbalkens  
   Train + wagons move along a progress bar
 - Farbverlauf: rot → gelb → grün  
   Color gradient: red → yellow → green
@@ -32,15 +32,10 @@ A simple HTML overlay for **Train Driver 2** that fetches your current timetable
 Open the HTML file in a text editor and adjust the following section:
 
 ```js
-const config = {
-  username: "BravuraLion",        // <-- TD2-Fahrernamen / TD2 driver name
-  language: "de",                 // "de" = Deutsch, "en" = English
-  lokImage: "https://.../lok.png", // Lok-URL / Engine image
-  wagonImages: [                   // Waggons / Wagons
-    "https://.../wagen1.png",
-    "https://.../wagen2.png"
-  ]
-};
+    const config = {
+      username: "MiKoLaS",
+      language: "de"
+    };
 ```
 
 ---
@@ -77,8 +72,8 @@ Double-click → Open with → browser of your choice
 
 - Zeigt immer den **zuletzt gestarteten Fahrplan** (auch wenn abgeschlossen)  
   Always shows the **last started timetable** (even if finished)
-- Nutze transparente Bilder für beste Optik  
-  Use transparent images for the best look
+- Die Progressbar geht erst weiter wenn der Fahrplan vom FDL bestätigt wurde
+  The progress bar only continues once the timetable has been confirmed by the FDL
 
 ---
 
