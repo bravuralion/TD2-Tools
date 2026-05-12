@@ -30,8 +30,6 @@ const config = {
 };
 ```
 
-Du kannst beliebige andere Bilder verwenden – z. B. deine Lieblingslok oder eigene Icons.
-
 ---
 
 ## 🖥️ Nutzung in OBS
