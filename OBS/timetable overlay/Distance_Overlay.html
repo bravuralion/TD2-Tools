@@ -63,15 +63,17 @@
         loading: "Lade Fahrplan...",
         none: "Kein Fahrplan gefunden.",
         error: "Fehler beim Laden!",
-        finished: dist => `Fahrplan abgeschlossen (${dist} km)`,
-        progress: (curr, total) => `${curr} km von ${total} km`
+        finished: (dist, delayText) => `Fahrplan abgeschlossen (${dist} km) | Verspätung: ${delayText}`,
+        progress: (curr, total, delayText) => `${curr} km von ${total} km | Verspätung: ${delayText}`,
+        delayUnknown: "k.A."
       },
       en: {
         loading: "Loading timetable...",
         none: "No timetable found.",
         error: "Error loading data!",
-        finished: dist => `Timetable completed (${dist} km)`,
-        progress: (curr, total) => `${curr} km of ${total} km`
+        finished: (dist, delayText) => `Timetable completed (${dist} km) | Delay: ${delayText}`,
+        progress: (curr, total, delayText) => `${curr} km of ${total} km | Delay: ${delayText}`,
+        delayUnknown: "n/a"
       }
     };
 
@@ -82,6 +84,51 @@
     const containerWidth = 600;
     const vehicleWidth = 119;
     const vehicleGap = 1;
+
+
+    function parseApiDate(value) {
+      if (!value || typeof value !== "string") {
+        return null;
+      }
+
+      if (value.startsWith("1970-01-01")) {
+        return null;
+      }
+
+      const ts = Date.parse(value);
+      return Number.isFinite(ts) ? ts : null;
+    }
+
+    function formatDelay(minutes) {
+      const rounded = Math.round(minutes);
+      const sign = rounded > 0 ? "+" : "";
+      return `${sign}${rounded} min`;
+    }
+
+    function resolveDelay(plan) {
+      const index = Math.max((Number(plan.confirmedStopsCount) || 1) - 1, 0);
+
+      const actualArrival = parseApiDate(plan.checkpointArrivals?.[index]);
+      const schedArrival = parseApiDate(plan.checkpointArrivalsScheduled?.[index]);
+      const actualDeparture = parseApiDate(plan.checkpointDepartures?.[index]);
+      const schedDeparture = parseApiDate(plan.checkpointDeparturesScheduled?.[index]);
+
+      if (actualDeparture !== null && schedDeparture !== null) {
+        return formatDelay((actualDeparture - schedDeparture) / 60000);
+      }
+
+      if (actualArrival !== null && schedArrival !== null) {
+        return formatDelay((actualArrival - schedArrival) / 60000);
+      }
+
+      const beginActual = parseApiDate(plan.beginDate);
+      const beginScheduled = parseApiDate(plan.scheduledBeginDate);
+      if (beginActual !== null && beginScheduled !== null) {
+        return formatDelay((beginActual - beginScheduled) / 60000);
+      }
+
+      return null;
+    }
 
     async function update() {
       const t = texts[config.language] || texts["en"];
@@ -185,10 +232,12 @@ vehicles.forEach((fullId) => {
 
 
 
+        const delayText = resolveDelay(plan) || t.delayUnknown;
+
         const done = progress >= distance;
         info.textContent = done
-          ? t.finished(progress.toFixed(1))
-          : t.progress(progress.toFixed(1), distance.toFixed(1));
+          ? t.finished(progress.toFixed(1), delayText)
+          : t.progress(progress.toFixed(1), distance.toFixed(1), delayText);
 
       } catch (e) {
         console.error("💥 API-Fehler:", e);
