@@ -27,11 +27,6 @@ Ein simples HTML-Overlay für **Train Driver 2**, das deinen aktuellen Fahrplan 
 const config = {
   username: "BravuraLion",        // TD2-Fahrernamen hier eintragen
   language: "de",                 // "de" für Deutsch, "en" für Englisch
-  lokImage: "https://.../lok.png", // Lok-URL
-  wagonImages: [                   // 1–n Waggons
-    "https://.../wagen1.png",
-    "https://.../wagen2.png"
-  ]
 };
 ```
 
