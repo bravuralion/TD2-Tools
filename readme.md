@@ -56,13 +56,6 @@ Doppelklick auf die HTML-Datei oder Rechtsklick → Öffnen mit → Browser dein
 
 ---
 
-## 📸 Vorschau
-
-![Vorschau](https://via.placeholder.com/600x90.png?text=TD2+Overlay+Vorschau)  
-*(Du kannst hier gern ein echtes Screenshot einfügen)*
-
----
-
 ## 💡 Tipps
 
 - Das Overlay zeigt immer den **zuletzt gestarteten Fahrplan** an (auch wenn er bereits abgeschlossen ist)
