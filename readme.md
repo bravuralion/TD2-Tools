@@ -1,66 +1,61 @@
-# 🚆 TD2 Timetable Overlay für OBS
+# 🚆 TD2 Timetable Overlay for OBS
 
-Ein simples HTML-Overlay für **Train Driver 2**, das deinen aktuellen Fahrplan von [stacjownik.spythere.eu](https://stacjownik.spythere.eu) holt und in OBS darstellt – inkl. Fortschrittsbalken, Lok & Waggons und mehrsprachiger Anzeige.
+A simple HTML overlay for **Train Driver 2** that fetches your current timetable from [stacjownik.spythere.eu](https://stacjownik.spythere.eu) and displays it in OBS – including a progress bar, locomotive & carriages, and multilingual display.
 
-> 🟢 Kompatibel mit OBS (Browser Source)  
-> 🔄 Automatische Aktualisierung alle 1 Sekunde  
-> 🌍 Unterstützt Deutsch & Englisch  
-> ✏️ Leicht konfigurierbar – kein Programmierwissen nötig
-
+> 🟢 Compatible with OBS (Browser Source)  
+> 🔄 Automatic updates
+> 🌍 Supports German & English
+> 
 ---
 
 ## ✅ Features
 
-- Zeigt deinen aktuellen Fahrplanfortschritt an (in Kilometern)
-- Lok + Waggons animieren sich entlang eines Fortschrittsbalkens
-- Farbverlauf: rot → gelb → grün je nach Fortschritt
-- Unterstützt Deutsch & Englisch (umschaltbar)
-- Super einfach zu konfigurieren
+- Displays your current timetable progress (in kilometres)
+- Locomotive + carriages animate along a progress bar
+- Colour gradient: red → yellow → green depending on progress
+- Supports German & English (switchable)
 
 ---
 
-## ⚙️ Konfiguration
+## ⚙️ Configuration
 
-Öffne die HTML-Datei in einem Texteditor und passe ganz oben den folgenden Abschnitt an:
+Open the HTML file in a text editor and customise the following section at the very top:
 
 ```js
-const config = {
-  username: "BravuraLion",        // TD2-Fahrernamen hier eintragen
-  language: "de",                 // "de" für Deutsch, "en" für Englisch
+const config = {  username: ‘BravuraLion’,        // Enter your TD2 driver name here
+  language: ‘de’,                 // “de” for German, ‘en’ for English
 };
 ```
 
 ---
 
-## 🖥️ Nutzung in OBS
+## 🖥️ Using in OBS
 
-1. Öffne OBS
-2. Füge **eine neue Browser-Quelle** hinzu
-3. Wähle die HTML-Datei auf deiner Festplatte oder gib eine lokale URL an (`file:///C:/...`)
-4. Setze die Größe auf `600x90`
-5. Optional: **Chroma Key** oder **Transparenz aktivieren**, wenn du es in deine Szene einbauen willst
-
----
-
-## 🌐 Vorschau im Browser
-
-Du kannst das Overlay auch einfach im Browser testen:  
-Doppelklick auf die HTML-Datei oder Rechtsklick → Öffnen mit → Browser deiner Wahl.
+1. Open OBS
+2. Add **a new browser source**
+3. Select the HTML file on your hard drive or enter a local URL (`file:///C:/...`)
+4. Set the size to `600x90`
+5. Optional: **Enable Chroma Key** or **Transparency** if you want to integrate it into your scene
 
 ---
 
-## 💡 Tipps
+## 🌐 Preview in the browser
 
-- Das Overlay zeigt immer den **zuletzt gestarteten Fahrplan** an (auch wenn er bereits abgeschlossen ist)
-- Die API liefert alle 5 Sekunden neue Daten – das Overlay holt sie jede Sekunde
-- Für bessere Optik → nutze transparente Bilder mit gleichen Abmessungen
+You can also simply test the overlay in your browser:  
+Double-click the HTML file or right-click → Open with → your browser of choice.
+
+---
+
+## 💡 Tips
+
+- The overlay always displays the **most recently started timetable** (even if it has already finished)
+- The API provides new data every 5 seconds
 
 ---
 
 ## 🛠 Credits
 
-- Overlay-Script: [Bravura](https://github.com/deinProfil)
-- Datenquelle: [Stacjownik TD2](https://stacjownik.spythere.eu)
+- Overlay script: [Bravura](https://github.com/deinProfil)
+- Data source: [Stacjownik TD2](https://stacjownik.spythere.eu)
 - Icons: Font Awesome / Wikipedia Commons
-
 
