@@ -1,0 +1,16 @@
+services:
+  td2-watchdog:
+    build: .
+    image: td2-watchdog
+    container_name: td2-watchdog
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATA_DIR: /data
+    volumes:
+      # Persist watches across container restarts.
+      - watchdog-data:/data
+
+volumes:
+  watchdog-data:

@@ -1,0 +1,10 @@
+.env
+watches.json
+__pycache__/
+*.pyc
+.venv/
+venv/
+.git/
+.gitignore
+README.md
+*.md
