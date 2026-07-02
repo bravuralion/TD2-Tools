@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TD2PolandClock")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4bae2115c39ef2a248a14be9f43b3e5a4e035828")]
 [assembly: System.Reflection.AssemblyProductAttribute("TD2PolandClock")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TD2PolandClock")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

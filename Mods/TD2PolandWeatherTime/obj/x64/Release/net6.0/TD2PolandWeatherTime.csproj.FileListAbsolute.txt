@@ -1,0 +1,12 @@
+C:\Users\Bravura Revolution\Desktop\TD2PolandWeatherTime\bin\x64\Release\net6.0\TD2PolandWeatherTime.deps.json
+C:\Users\Bravura Revolution\Desktop\TD2PolandWeatherTime\bin\x64\Release\net6.0\TD2PolandWeatherTime.dll
+C:\Users\Bravura Revolution\Desktop\TD2PolandWeatherTime\bin\x64\Release\net6.0\TD2PolandWeatherTime.pdb
+C:\Users\Bravura Revolution\Desktop\TD2PolandWeatherTime\obj\x64\Release\net6.0\TD2PolandWeatherTime.csproj.AssemblyReference.cache
+C:\Users\Bravura Revolution\Desktop\TD2PolandWeatherTime\obj\x64\Release\net6.0\TD2PolandWeatherTime.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bravura Revolution\Desktop\TD2PolandWeatherTime\obj\x64\Release\net6.0\TD2PolandWeatherTime.AssemblyInfoInputs.cache
+C:\Users\Bravura Revolution\Desktop\TD2PolandWeatherTime\obj\x64\Release\net6.0\TD2PolandWeatherTime.AssemblyInfo.cs
+C:\Users\Bravura Revolution\Desktop\TD2PolandWeatherTime\obj\x64\Release\net6.0\TD2PolandWeatherTime.csproj.CoreCompileInputs.cache
+C:\Users\Bravura Revolution\Desktop\TD2PolandWeatherTime\obj\x64\Release\net6.0\TD2PolandWeatherTime.dll
+C:\Users\Bravura Revolution\Desktop\TD2PolandWeatherTime\obj\x64\Release\net6.0\refint\TD2PolandWeatherTime.dll
+C:\Users\Bravura Revolution\Desktop\TD2PolandWeatherTime\obj\x64\Release\net6.0\TD2PolandWeatherTime.pdb
+C:\Users\Bravura Revolution\Desktop\TD2PolandWeatherTime\obj\x64\Release\net6.0\ref\TD2PolandWeatherTime.dll

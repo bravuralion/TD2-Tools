@@ -1,0 +1,72 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Bravura Revolution\\Documents\\GitHub\\TD2-Tools\\Mods\\TD2PolandClock\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{84BA997B-40A7-6464-E17E-1864D97E7DDA}|TD2PolandClock.csproj|c:\\users\\bravura revolution\\documents\\github\\td2-tools\\mods\\td2polandclock\\polandclockmod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84BA997B-40A7-6464-E17E-1864D97E7DDA}|TD2PolandClock.csproj|solutionrelative:polandclockmod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84BA997B-40A7-6464-E17E-1864D97E7DDA}|TD2PolandClock.csproj|c:\\users\\bravura revolution\\documents\\github\\td2-tools\\mods\\td2polandclock\\td2polandclock.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{84BA997B-40A7-6464-E17E-1864D97E7DDA}|TD2PolandClock.csproj|solutionrelative:td2polandclock.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84BA997B-40A7-6464-E17E-1864D97E7DDA}|TD2PolandClock.csproj|c:\\users\\bravura revolution\\documents\\github\\td2-tools\\mods\\td2polandclock\\td2polandclock.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{84BA997B-40A7-6464-E17E-1864D97E7DDA}|TD2PolandClock.csproj|solutionrelative:td2polandclock.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PolandClockMod.cs",
+              "DocumentMoniker": "C:\\Users\\Bravura Revolution\\Documents\\GitHub\\TD2-Tools\\Mods\\TD2PolandClock\\PolandClockMod.cs",
+              "RelativeDocumentMoniker": "PolandClockMod.cs",
+              "ToolTip": "C:\\Users\\Bravura Revolution\\Documents\\GitHub\\TD2-Tools\\Mods\\TD2PolandClock\\PolandClockMod.cs",
+              "RelativeToolTip": "PolandClockMod.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAcwGsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-02T07:37:20.471Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TD2PolandClock.csproj",
+              "DocumentMoniker": "C:\\Users\\Bravura Revolution\\Documents\\GitHub\\TD2-Tools\\Mods\\TD2PolandClock\\TD2PolandClock.csproj",
+              "RelativeDocumentMoniker": "TD2PolandClock.csproj",
+              "ToolTip": "C:\\Users\\Bravura Revolution\\Documents\\GitHub\\TD2-Tools\\Mods\\TD2PolandClock\\TD2PolandClock.csproj",
+              "RelativeToolTip": "TD2PolandClock.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-02T07:26:01.699Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TD2PolandClock",
+              "DocumentMoniker": "C:\\Users\\Bravura Revolution\\Documents\\GitHub\\TD2-Tools\\Mods\\TD2PolandClock\\TD2PolandClock.csproj",
+              "RelativeDocumentMoniker": "TD2PolandClock.csproj",
+              "ToolTip": "C:\\Users\\Bravura Revolution\\Documents\\GitHub\\TD2-Tools\\Mods\\TD2PolandClock\\TD2PolandClock.csproj",
+              "RelativeToolTip": "TD2PolandClock.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-02T07:26:04.142Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

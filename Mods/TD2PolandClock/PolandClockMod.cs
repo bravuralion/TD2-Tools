@@ -56,8 +56,15 @@ namespace TD2PolandClock
             }
         }
 
-        // Format an die im Screenshot beobachtete Anzeige angepasst: "13:11:29" -> 24h mit Sekunden
-        private const string ClockFormat = "HH:mm:ss";
+        // Format für beide Uhrzeiten. Lokale Zeit ohne Sekunden (kompakter, da sie nur zur
+        // Orientierung dient), polnische Zeit mit Sekunden (das ist die "wichtige" Anzeige).
+        private const string LocalClockFormat = "HH:mm";
+        private const string PolandClockFormat = "HH:mm:ss";
+
+        // Relative Skalierung gegenüber der aktuellen Basis-Schriftgröße der Uhr - kein fester
+        // Pixelwert, damit es zu jeder UI-Skalierung/Auflösung passt.
+        private const float LocalSizeFactor = 0.6f;
+        private const float PolandSizeFactor = 1.15f;
 
         static void Postfix(TextClock __instance)
         {
@@ -65,16 +72,35 @@ namespace TD2PolandClock
             {
                 DateTime utcNow = DateTime.UtcNow;
                 DateTime polandTime = TimeZoneInfo.ConvertTimeFromUtc(utcNow, PolandTimeZone);
+                DateTime localTime = utcNow.ToLocalTime(); // Systemzeit des PCs
 
                 var textComponent = __instance.Text;
-                if (textComponent != null)
+                if (textComponent == null)
                 {
-                    textComponent.text = polandTime.ToString(ClockFormat);
+                    return;
                 }
+
+                // Rich-Text muss aktiviert sein, damit <size=...> überhaupt interpretiert wird
+                // statt als Klartext angezeigt zu werden.
+                if (!textComponent.supportRichText)
+                {
+                    textComponent.supportRichText = true;
+                }
+
+                int baseSize = textComponent.fontSize;
+                int localSize = Math.Max(1, (int)(baseSize * LocalSizeFactor));
+                int polandSize = Math.Max(1, (int)(baseSize * PolandSizeFactor));
+
+                string localPart = localTime.ToString(LocalClockFormat);
+                string polandPart = polandTime.ToString(PolandClockFormat);
+
+                // Lokale Zeit klein, polnische Zeit groß, durch einen dezenten Trenner getrennt
+                textComponent.text =
+                    $"<size={localSize}>{localPart}</size>  <size={polandSize}>{polandPart}</size>";
             }
             catch (Exception ex)
             {
-                MelonLogger.Error("[TD2 Poland Clock] Fehler beim Setzen der polnischen Uhrzeit: " + ex);
+                MelonLogger.Error("[TD2 Poland Clock] Fehler beim Setzen der Uhrzeiten: " + ex);
             }
         }
     }

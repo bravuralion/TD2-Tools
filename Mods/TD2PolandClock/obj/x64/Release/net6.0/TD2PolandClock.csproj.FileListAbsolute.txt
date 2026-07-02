@@ -10,3 +10,16 @@ C:\Users\Bravura Revolution\Downloads\TD2Mods (13)\TD2Mods\TD2PolandClock\obj\x6
 C:\Users\Bravura Revolution\Downloads\TD2Mods (13)\TD2Mods\TD2PolandClock\obj\x64\Release\net6.0\refint\TD2PolandClock.dll
 C:\Users\Bravura Revolution\Downloads\TD2Mods (13)\TD2Mods\TD2PolandClock\obj\x64\Release\net6.0\TD2PolandClock.pdb
 C:\Users\Bravura Revolution\Downloads\TD2Mods (13)\TD2Mods\TD2PolandClock\obj\x64\Release\net6.0\ref\TD2PolandClock.dll
+C:\Users\Bravura Revolution\Documents\GitHub\TD2-Tools\Mods\TD2PolandClock\obj\x64\Release\net6.0\TD2PolandClock.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bravura Revolution\Documents\GitHub\TD2-Tools\Mods\TD2PolandClock\obj\x64\Release\net6.0\TD2PolandClock.AssemblyInfoInputs.cache
+C:\Users\Bravura Revolution\Documents\GitHub\TD2-Tools\Mods\TD2PolandClock\obj\x64\Release\net6.0\TD2PolandClock.AssemblyInfo.cs
+C:\Users\Bravura Revolution\Documents\GitHub\TD2-Tools\Mods\TD2PolandClock\obj\x64\Release\net6.0\TD2PolandClock.csproj.CoreCompileInputs.cache
+C:\Users\Bravura Revolution\Documents\GitHub\TD2-Tools\Mods\TD2PolandClock\obj\x64\Release\net6.0\TD2PolandClock.sourcelink.json
+C:\Users\Bravura Revolution\Documents\GitHub\TD2-Tools\Mods\TD2PolandClock\obj\x64\Release\net6.0\TD2PolandClock.dll
+C:\Users\Bravura Revolution\Documents\GitHub\TD2-Tools\Mods\TD2PolandClock\obj\x64\Release\net6.0\refint\TD2PolandClock.dll
+C:\Users\Bravura Revolution\Documents\GitHub\TD2-Tools\Mods\TD2PolandClock\obj\x64\Release\net6.0\TD2PolandClock.pdb
+C:\Users\Bravura Revolution\Documents\GitHub\TD2-Tools\Mods\TD2PolandClock\obj\x64\Release\net6.0\TD2PolandClock.csproj.AssemblyReference.cache
+C:\Users\Bravura Revolution\Documents\GitHub\TD2-Tools\Mods\TD2PolandClock\bin\x64\Release\net6.0\TD2PolandClock.deps.json
+C:\Users\Bravura Revolution\Documents\GitHub\TD2-Tools\Mods\TD2PolandClock\bin\x64\Release\net6.0\TD2PolandClock.dll
+C:\Users\Bravura Revolution\Documents\GitHub\TD2-Tools\Mods\TD2PolandClock\bin\x64\Release\net6.0\TD2PolandClock.pdb
+C:\Users\Bravura Revolution\Documents\GitHub\TD2-Tools\Mods\TD2PolandClock\obj\x64\Release\net6.0\ref\TD2PolandClock.dll

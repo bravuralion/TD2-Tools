@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bravura Revolution\\Downloads\\TD2Mods (13)\\TD2Mods\\TD2PolandClock\\TD2PolandClock.csproj",
+      "projectUniqueName": "C:\\Users\\Bravura Revolution\\Documents\\GitHub\\TD2-Tools\\Mods\\TD2PolandClock\\TD2PolandClock.csproj",
       "projectName": "TD2PolandClock",
-      "projectPath": "C:\\Users\\Bravura Revolution\\Downloads\\TD2Mods (13)\\TD2Mods\\TD2PolandClock\\TD2PolandClock.csproj",
+      "projectPath": "C:\\Users\\Bravura Revolution\\Documents\\GitHub\\TD2-Tools\\Mods\\TD2PolandClock\\TD2PolandClock.csproj",
       "packagesPath": "C:\\Users\\Bravura Revolution\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bravura Revolution\\Downloads\\TD2Mods (13)\\TD2Mods\\TD2PolandClock\\obj\\",
+      "outputPath": "C:\\Users\\Bravura Revolution\\Documents\\GitHub\\TD2-Tools\\Mods\\TD2PolandClock\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
